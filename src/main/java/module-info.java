@@ -12,4 +12,6 @@ module com.example.sdj2assignment1 {
 
     opens com.example.sdj2assignment1 to javafx.fxml;
     exports com.example.sdj2assignment1;
+    exports com.example.sdj2assignment1.view;
+    opens com.example.sdj2assignment1.view to javafx.fxml;
 }

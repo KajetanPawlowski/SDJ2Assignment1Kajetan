@@ -1,6 +1,12 @@
 package com.example.sdj2assignment1.radiator;
 
 
+import com.example.sdj2assignment1.Observer;
+import com.example.sdj2assignment1.Subject;
+import javafx.application.Platform;
+
+import java.util.ArrayList;
+
 public class Power3State implements RadiatorState{
 
     private final int POWER = 3;
@@ -10,34 +16,11 @@ public class Power3State implements RadiatorState{
 
 
     public Power3State(Radiator radiator) {
-        timer = new Thread(new Timer(MAX_SEC, radiator));
-        timer.start();
+       timer = new Thread(new Timer(MAX_SEC, radiator));
+       timer.start();
     }
 
-    private class Timer implements Runnable{
-        private long timeInSec;
-        private Radiator radiator;
 
-        public Timer(int timeInSec, Radiator radiator) {
-            this.timeInSec = timeInSec;
-            this.radiator = radiator;
-
-        }
-
-        public void run() {
-            try {
-                Thread.sleep(timeInSec * MILIS);
-                System.out.println("OVERHEATED! Power: 2");
-                radiator.setPowerState(new Power2State());;
-
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-        }
-
-    }
 
     public void turnUp(Radiator radiator) {
 //		nothing
@@ -49,6 +32,7 @@ public class Power3State implements RadiatorState{
             timer.stop();
         }
         radiator.setPowerState(new Power2State());
+
 
     }
 
